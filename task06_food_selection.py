@@ -1,3 +1,4 @@
+# python task06_food_selection.py --budget 110
 from typing import Dict, List, Tuple
 
 items: Dict[str, Dict[str, int]] = {
@@ -11,10 +12,6 @@ items: Dict[str, Dict[str, int]] = {
 
 
 def greedy_algorithm(items: Dict[str, Dict[str, int]], budget: int) -> Dict[str, int | List[str]]:
-    """Pick items by highest calories-to-cost ratio without exceeding budget.
-
-    Note: Greedy is fast but not guaranteed optimal.
-    """
     sorted_items = sorted(
         items.items(), key=lambda kv: kv[1]["calories"] / kv[1]["cost"], reverse=True
     )
@@ -32,10 +29,6 @@ def greedy_algorithm(items: Dict[str, Dict[str, int]], budget: int) -> Dict[str,
 
 
 def dynamic_programming(items: Dict[str, Dict[str, int]], budget: int) -> Dict[str, int | List[str]]:
-    """0/1 knapsack for optimal calories under budget.
-
-    Each item can be taken at most once.
-    """
     names = list(items.keys())
     costs = [items[n]["cost"] for n in names]
     calories = [items[n]["calories"] for n in names]
@@ -74,8 +67,8 @@ def _print_solution(title: str, result: Dict[str, int | List[str]]) -> None:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Вибір їжі за бюджетом")
-    parser.add_argument("--budget", type=int, default=90, help="Доступний бюджет (грн)")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--budget", type=int, default=90)
     args = parser.parse_args()
 
     print(f"Бюджет: {args.budget}")
@@ -83,4 +76,4 @@ if __name__ == "__main__":
     dp_res = dynamic_programming(items, args.budget)
 
     _print_solution("\nЖадібний алгоритм:", greedy_res)
-    _print_solution("\nДинамічне програмування (оптимально):", dp_res)
+    _print_solution("\nДинамічне програмування:", dp_res)

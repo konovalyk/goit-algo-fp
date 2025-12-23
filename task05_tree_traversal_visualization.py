@@ -1,7 +1,7 @@
 from collections import deque
 from typing import Callable, Iterable, List, Optional
 
-from heap_visualization import Node, draw_tree
+from task04_heap_visualization import Node, draw_tree
 from matplotlib import cm, colors as mpl_colors
 
 
