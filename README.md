@@ -1,18 +1,4 @@
-## Heap Visualization
 
-- Visualize a binary heap (array form) as a tree:
-
-```
-python heap_visualization.py
-```
-
-- Use programmatically:
-
-```
-from heap_visualization import visualize_heap
-
-visualize_heap([1,3,5,7,9,11,13,15], title="Мін-купа")
-```
 
 # Fractal Tree (Task 2)
 
